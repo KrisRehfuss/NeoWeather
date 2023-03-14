@@ -160,7 +160,7 @@ body {
 }
 
 .NavMD {
-  @apply  lg:grid grid-cols-3 lg:mx-auto
+  @apply lg:grid grid-cols-3 lg:mx-auto
 }
 
 .NavItem {

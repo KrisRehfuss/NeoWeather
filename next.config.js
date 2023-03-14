@@ -8,7 +8,7 @@ const withVideos = require('next-videos')
 module.exports = {
   images: {
     domains: [
-      'images.unsplash.com'
+      'images.unsplash.com', 'openweathermap.org'
     ],
   },
 };

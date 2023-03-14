@@ -4,7 +4,7 @@ import { BsSun } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
-import M from "../../public/Engine.png";
+import sun from "../../public/sun.png";
 
 function Nav() {
   return (
@@ -12,8 +12,8 @@ function Nav() {
 
     <div className="Nav shadow-2xl ">
       {/* Logo */}
-      <div className="NameShadow FlexCenter ml-4 h-full m-0   text-center text-gray-300 font-bold text-xl">
-        <Image className=" mr-3 w-12" src={M} alt="M Logo" />
+      <div className="NameShadow FlexCenter ml-4 min-h-[60px] m-0 text-center text-gray-300 font-bold text-xl">
+        <Image className=" mr-3 w-12" src={sun} alt="M Logo" />
         Neo<span className="ml-1 text-Redd"> Weather </span>
       </div>
 

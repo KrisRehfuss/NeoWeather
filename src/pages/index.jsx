@@ -33,74 +33,75 @@ export default function Home() {
   // API Endpoint + Key
   // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
 
-
-// Search Function
+  // Search Function
   const fetchWeather = (e) => {
     e.preventDefault();
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
     setLoading(true);
     axios.get(url).then((response) => {
       setWeather(response.data);
       console.log(response.data);
     });
-    setCity('');
+    setCity("");
     setLoading(false);
   };
 
-  if(loading) {
+  if (loading) {
+    return <Spinner />;
+  } else {
+    return (
+      <>
+        <Head>
+          <title>Kris Dashboard </title>
+          <meta name="description" content="Kris Dash" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/engine.png" />
+        </Head>
 
-  }
+        <main>
+          {/* <Banner /> */}
 
-  return (
-    <>
-      <Head>
-        <title>Kris Dashboard </title>
-        <meta name="description" content="Kris Dash" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/engine.png" />
-      </Head>
+          {/* Wrapper Start */}
+          <div className="relative FlexCenterCol font-pop w-screen h-screen">
+            <Nav />
+            <Image
+              src={Beach}
+              layout="fill"
+              className="-z-50 opacity-90"
+              object="cover"
+              alt="#"
+            />
 
-      <main>
-        <Nav />
-        {/* <Banner /> */}
+            {/* Header */}
 
-        {/* Wrapper Start */}
-        <div className="MARK -z-50 FlexCenterCol mt-4 font-pop w-screen h-fit">
-          <Image
-            src={Beach}
-            layout="fill"
-            // className='opacity-90'
-            object='cover'
-            alt="#"
-          />
+            <Header style="Header rounded-md p-4 mt-6 xl:mt-12" />
+            {weather.main && <Weather data={weather} />}
 
-          {/* Header */}
-          <Header style="Header rounded-md p-4 ClearDrop xl:mt-24  lg:mt-32" />
-
-          {/* Search Bar */}
-          <div className="z-20 mt-32  w-screen p-4 FlexCenter">
-            <form onSubmit={fetchWeather} className=" FlexCenter lg:w-2/4  Round BoxFit">
-              <input
-              onChange={(e) => setCity(e.target.value)}
-                className=" text-white text-md font-light ml-16 ClearDrop lg:w-2/4 w-3/4 Shadow bg-Logo bg-opacity-60 rounded-full p-2 px-4"
-                type="text"
-                placeholder='Search city'
-              />
-              <BiSearch
-              onClick={fetchWeather}
-              size={32}
-              className="p-2 mx-4 mb-2 cursor-pointer rounded-full bg-Redd" />
-            </form>
-          </div>
+            {/* Search Bar */}
+            <div className="z-20 mt-32  w-screen p-4 FlexCenter">
+              <form
+                onSubmit={fetchWeather}
+                className=" FlexCenter lg:w-2/4  Round BoxFit"
+              >
+                <input
+                  onChange={(e) => setCity(e.target.value)}
+                  className=" text-white text-md font-light ml-16 ClearDrop lg:w-2/4 w-3/4 Shadow bg-Logo bg-opacity-60 rounded-full p-2 px-4"
+                  type="text"
+                  placeholder="Search city"
+                />
+                <BiSearch
+                  onClick={fetchWeather}
+                  size={32}
+                  className="p-2 mx-4 mb-2 cursor-pointer rounded-full bg-Redd"
+                />
+              </form>
+            </div>
             {/* Fetch Data Button */}
 
-            
-          {/* Caption */}
-
-          {weather.main && <Weather data={weather} />}
-
-        </div>
-      </main>
-    </>
-  );
+            {/* Caption */}
+          </div>
+        </main>
+      </>
+    );
+  }
 }
