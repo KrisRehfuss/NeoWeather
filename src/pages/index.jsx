@@ -1,29 +1,13 @@
 import Head from "next/head";
 import axios from "axios";
 import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
-import { AiOutlineStar } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import Image from "next/image";
 import Nav from "./Nav";
 import Weather from "./Weather";
 import Spinner from "./Spinner";
 import Beach from "../../public/Beach.jpg";
-// import Axis from "./Axis";
-import Banner from "./Banner";
 import Header from "./Header";
-import Top from "./Top";
-import SearchBar from "./SearchBar";
-import Skills from "./Skills";
-import Footer from "./Footer";
-import JS from "../../public/JS.png";
-import TS from "../../public/TS.png";
-import Tailwind from "../../public/tail.png";
-import Git from "../../public/git.png";
-import React from "../../public/react.png";
-import OpenAI from "../../public/openai.png";
-import Next from "../../public/next-js.svg";
-import Video from "./Video";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -59,7 +43,6 @@ export default function Home() {
         </Head>
 
         <main>
-          {/* <Banner /> */}
 
           {/* Wrapper Start */}
           <div className="relative FlexCenterCol font-pop w-screen h-screen">
