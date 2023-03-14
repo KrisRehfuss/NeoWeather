@@ -1,8 +1,14 @@
 import Head from "next/head";
+import axios from "axios";
+import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import Image from "next/image";
 import Nav from "./Nav";
+import Weather from "./Weather";
+import Spinner from "./Spinner";
+import Beach from "../../public/Beach.jpg";
 // import Axis from "./Axis";
 import Banner from "./Banner";
 import Header from "./Header";
@@ -20,6 +26,31 @@ import Next from "../../public/next-js.svg";
 import Video from "./Video";
 
 export default function Home() {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  // API Endpoint + Key
+  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+
+
+// Search Function
+  const fetchWeather = (e) => {
+    e.preventDefault();
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+    setLoading(true);
+    axios.get(url).then((response) => {
+      setWeather(response.data);
+      console.log(response.data);
+    });
+    setCity('');
+    setLoading(false);
+  };
+
+  if(loading) {
+
+  }
+
   return (
     <>
       <Head>
@@ -31,74 +62,43 @@ export default function Home() {
 
       <main>
         <Nav />
-        <Banner />
+        {/* <Banner /> */}
 
         {/* Wrapper Start */}
-        <div className=" FlexCenterCol mt-4 font-pop BoxFull">
-          <div className=" md:max-w-5xl FlexCenterCol p-2  h-fit min-h-fit w-full">
-            {/* Header */}
-            <Header style="Header" />
+        <div className="MARK -z-50 FlexCenterCol mt-4 font-pop w-screen h-fit">
+          <Image
+            src={Beach}
+            layout="fill"
+            // className='opacity-90'
+            object='cover'
+            alt="#"
+          />
 
-            {/* Caption */}
-            <p className=" my-5 mb-5 leading-7 text-base text-gray-400 font-semibold text-center">
-              Phasing from Audio Engineer to React Developer, bringing a novel
-              perspective blooming with creativity.
-            </p>
+          {/* Header */}
+          <Header style="Header rounded-md p-4 ClearDrop xl:mt-24  lg:mt-32" />
 
-            {/* Current Skill Tree */}
-            <div className=" BoxFull mx-4 p-4 mt-6 mb-24">
-              <div className="Section ">
-                <h1 className="CaptionBlock text-white">Skill Tree</h1>
-                <div className="BoxFull pt-4 lg:grid grid-cols-2 gap-x-2">
-                  <Skills logo={Next} name="Next.js" color="bg-gray-400" />
-                  <Skills logo={React} name="React.js" color="bg-React" />
-                  <Skills logo={Tailwind} name="Tailwind" color="bg-gray-800" />
-                  <Skills logo={Git} name="Git" color="bg-Git" />
-                  <Skills logo={TS} name="TypeScript" color="bg-TS" />
-                  <Skills logo={OpenAI} name="OpenAI" color="bg-OpenAI" />
-                </div>
-              </div>
-
-              {/* Live Sites */}
-              <div className="Section">
-                <h1 className="CaptionBlock text-left text-white">
-                  Live Sites
-                </h1>
-
-                {/* Prompt Engine */}
-                <div className="BoxFull flex rounded-2xl text-gray-400 font-light Shadow bg-DarkG items-center w-full mb-2 p-2 mt-4 hover:ring-2 hover:ring-Redd Smooth">
-                  <div className="Round Shadow p-2 mx-2 bg-OpenAI">
-                    <Image
-                      src={OpenAI}
-                      className="w-8"
-                      // layout='fill'
-                      // objectFit='cover'
-                      alt="#"
-                    />
-                  </div>
-                  {/* Prompt Engine Link */}
-                  <a
-                    className="w-full  text-gray-300"
-                    href="https://prompt-engine.vercel.app/"
-                  >
-                    Prompt <span className="text-violet-500">Engine</span>
-                    <p className="text-sm text-gray-500 ">
-                      Created a site with a dynamic and creative layout that
-                      utilizes the OpenAI API to let the user tweak a few
-                      metrics to get a specific response.
-                    </p>
-                  </a>
-                </div>
-              </div>
-
-              <div className="Section mt-4">
-                <h1 className="CaptionBlock text-Redd"> Recent Compositions</h1>
-                <Video />
-              </div>
-            </div>
-            <Footer />
-            {/* <SearchBar /> */}
+          {/* Search Bar */}
+          <div className="z-20 mt-32  w-screen p-4 FlexCenter">
+            <form onSubmit={fetchWeather} className=" FlexCenter lg:w-2/4  Round BoxFit">
+              <input
+              onChange={(e) => setCity(e.target.value)}
+                className=" text-white text-md font-light ml-16 ClearDrop lg:w-2/4 w-3/4 Shadow bg-Logo bg-opacity-60 rounded-full p-2 px-4"
+                type="text"
+                placeholder='Search city'
+              />
+              <BiSearch
+              onClick={fetchWeather}
+              size={32}
+              className="p-2 mx-4 mb-2 cursor-pointer rounded-full bg-Redd" />
+            </form>
           </div>
+            {/* Fetch Data Button */}
+
+            
+          {/* Caption */}
+
+          {weather.main && <Weather data={weather} />}
+
         </div>
       </main>
     </>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BannerImage from "../../public/Abstract2.jpg";
+import BannerImage from "../../public/Abstract.jpg";
 
 function Banner() {
   return (

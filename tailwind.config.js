@@ -24,19 +24,18 @@ module.exports = {
         MidP: "#202148",
         RightG: "#0e380e",
 
-        Redd: "#e74175",
+        Redd: "#e64a2e",
         Smokey: "#090C02",
         Ash: "#BBC5AA",
-        Tan: '#DDE2C6',
-        Onyx: '#403F4C',
-        Uranian: '#A5D8FF',
-        Aero: '#05B2DC',
-        Apricot: '#FFD6BA',
-
+        Tan: "#DDE2C6",
+        Onyx: "#403F4C",
+        Uranian: "#A5D8FF",
+        Aero: "#05B2DC",
+        Apricot: "#FFD6BA",
 
         Bluee: "#1a0b52",
         Purpp: "#5e0e8c",
-        Logo: "#b86bac",
+        Logo: "#082338",
         Plum: "#8a3468",
         DarkG: "#202020",
         TS: "#222b35",
@@ -44,7 +43,6 @@ module.exports = {
         OpenAI: "#444654",
         Git: "#2c2320",
         LiteG: "#414141",
-
       },
       fontFamily: {
         inter: ["inter", "serif"],

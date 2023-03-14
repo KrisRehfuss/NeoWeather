@@ -5,5 +5,11 @@ const nextConfig = {
 }
 // next.config.js
 const withVideos = require('next-videos')
-module.exports = withVideos()
+module.exports = {
+  images: {
+    domains: [
+      'images.unsplash.com'
+    ],
+  },
+};
 // module.exports = nextConfig
