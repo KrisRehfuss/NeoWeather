@@ -2,7 +2,9 @@ import React from "react";
 import Image from "next/image";
 
 const Weather = ({ data }) => {
-  console.log(data);
+   if (!data) {
+     return null; // or you can return a default value
+   }
   return (
     <div className="relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto mt-12 p-4">
       {/* Top */}

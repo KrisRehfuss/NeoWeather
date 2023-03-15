@@ -36,10 +36,10 @@ export default function Home() {
     return (
       <>
         <Head>
-          <title>Kris Dashboard </title>
+          <title>NeoWeather </title>
           <meta name="description" content="Kris Dash" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/engine.png" />
+          <link rel="icon" href="/sun.png" />
         </Head>
 
         <main>
