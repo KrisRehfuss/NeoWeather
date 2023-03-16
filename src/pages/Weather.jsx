@@ -3,6 +3,7 @@ import Image from "next/image";
 import Sun from '../../public/sun.png'
 import LiteClouds from '../../public/cloud.png'
 import HeavyClouds from '../../public/HeavyClouds.png'
+import Rain from '../../public/rainy.png'
 import HeavyRain from '../../public/HeavyRain.png'
 import Thunder from '../../public/thunder.png'
 import Snow from '../../public/snow.png'
@@ -22,7 +23,7 @@ const Weather = ({ data }) => {
       } else if (iconCode === "03d" || iconCode === "03n") {
         imageBe = HeavyClouds
       } else if (iconCode === "09d" || iconCode === "09n") {
-        imageBe = HeavyRain
+        imageBe = Rain
       } else if (iconCode === "10d" || iconCode === "10n") {
         imageBe = HeavyRain
       } else if (iconCode === "11d" || iconCode === "11n") {
@@ -37,20 +38,20 @@ const Weather = ({ data }) => {
     };
 
   return (
-    <div className=" relative flex flex-col justify-between lg:w-[500px] w-full h-full m-auto mt-12 p-4">
+    <div className=" relative flex flex-col justify-between lg:w-[500px] w-96 h-full m-auto mt-12 p-4">
       {/* Top */}
-      <div className=" rounded-2xl bg-sky-900/60 relative flex justify-between p-4 pt-6">
-        <div className="flex flex-col items-center">
+      <div className=" rounded-2xl -z-20 bg-sky-900/40 lg:min-w-[900px] w-96 lg:h-96 lg:-mt-36 place-self-center relative flex justify-between p-4 pt-6">
+        <div className="flex flex-col lg:justify-between items-center">
           <Image
-            className="mb-4 "
+            className="mb-4  lg:mt-12 "
             // layout='fill'
             // object="cover"
-            width="50"
-            height="50"
+            width="100"
+            height="100"
             src={getWeatherIcon(data.weather[0].icon).src}
             alt="/"
           />
-          <p className="text-2xl">{data.weather[0].main}</p>
+          <p className="lg:text-6xl mt-12 lg:mb-24 text-2xl">{data.weather[0].main}</p>
         </div>
         <p className="lg:text-8xl text-6xl">
           {data.main.temp.toFixed(0)}&#176;
@@ -58,7 +59,7 @@ const Weather = ({ data }) => {
       </div>
 
       {/* Bottom */}
-      <div className=" bg-black/60 relative p-8 rounded-md">
+      <div className="MARK bg-black/60 relative p-8 rounded-md">
         <p className=" text-2xl text-center pb-6">Weather in {data.name}</p>
         <div className=" flex items-center justify-evenly text-center">
           <div>
