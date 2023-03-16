@@ -3,7 +3,7 @@ import Image from "next/image";
 import Sun from '../../public/sun.png'
 import LiteClouds from '../../public/cloud.png'
 import HeavyClouds from '../../public/HeavyClouds.png'
-import Rain from '../../public/rainy.png'
+// import Rain from '../../public/rainy.png'
 import HeavyRain from '../../public/HeavyRain.png'
 import Thunder from '../../public/thunder.png'
 import Snow from '../../public/snow.png'
@@ -23,7 +23,7 @@ const Weather = ({ data }) => {
       } else if (iconCode === "03d" || iconCode === "03n") {
         imageBe = HeavyClouds
       } else if (iconCode === "09d" || iconCode === "09n") {
-        imageBe = Rain
+        imageBe = HeavyRain
       } else if (iconCode === "10d" || iconCode === "10n") {
         imageBe = HeavyRain
       } else if (iconCode === "11d" || iconCode === "11n") {
