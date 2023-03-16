@@ -7,12 +7,15 @@ import Nav from "./Nav";
 import Weather from "./Weather";
 import Spinner from "./Spinner";
 import Beach from "../../public/Beach.jpg";
+import Clouds from '../../public/Clouds.jpg'
 import Header from "./Header";
 
 export default function Home() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
+  const [bgImage, setBgImage] = useState(Beach);
+
 
   // API Endpoint + Key
   // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
@@ -25,6 +28,11 @@ export default function Home() {
     axios.get(url).then((response) => {
       setWeather(response.data);
       console.log(response.data);
+      if (response.data.clouds.all > 0) {
+        setBgImage(Clouds);
+      } else {
+        setBgImage(Beach)
+      }
     });
     setCity("");
     setLoading(false);
@@ -43,14 +51,13 @@ export default function Home() {
         </Head>
 
         <main>
-
           {/* Wrapper Start */}
           <div className="relative FlexCenterCol font-pop w-screen h-screen">
             <Nav />
             <Image
-              src={Beach}
+              src={bgImage}
               layout="fill"
-              className="-z-50 opacity-90"
+              className="-z-50 Smoother opacity-90"
               object="cover"
               alt="#"
             />
