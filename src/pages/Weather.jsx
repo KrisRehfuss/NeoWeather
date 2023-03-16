@@ -3,7 +3,7 @@ import Image from "next/image";
 import Sun from '../../public/sun.png'
 import LiteClouds from '../../public/cloud.png'
 import HeavyClouds from '../../public/HeavyClouds.png'
-import Rain from '../../public/rain.png'
+import Rain from '../../public/rainy.png'
 import HeavyRain from '../../public/HeavyRain.png'
 import Thunder from '../../public/thunder.png'
 import Snow from '../../public/snow.png'
