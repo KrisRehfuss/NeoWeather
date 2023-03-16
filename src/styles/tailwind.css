@@ -10,6 +10,8 @@ body {
   @apply bg-coal Smoother text-white font-pop scrollbar-hide scroll-smooth;
 }
 
+/* Test */
+
 
 .MainWrapper {
   @apply flex flex-col-reverse items-center justify-evenly p-8 BoxFull MainWrapperDesktop
