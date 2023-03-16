@@ -18,7 +18,7 @@ function Nav() {
           src={sun}
           alt="M Logo"
         />
-        Neo<span className="ml-1 text-Redd"> Weather </span>
+        Oscillating<span className="ml-1 text-Redd"> Sun </span>
       </div>
 
       {/* Search Bar */}

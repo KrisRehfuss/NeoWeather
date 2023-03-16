@@ -38,9 +38,9 @@ const Weather = ({ data }) => {
     };
 
   return (
-    <div className=" relative flex flex-col justify-between lg:w-[500px] w-96 h-full m-auto mt-12 p-4">
+    <div className="relative flex flex-col justify-between lg:w-[500px] w-96 h-full m-auto mt-12 p-4">
       {/* Top */}
-      <div className=" rounded-2xl -z-20 bg-sky-900/40 lg:min-w-[900px] w-96 lg:h-96 lg:-mt-36 place-self-center relative flex justify-between p-4 pt-6">
+      <div className="MARK flex flex-col rounded-2xl -z-20 bg-sky-900/40 lg:min-w-[900px] lg:h-[900px] w-96  lg:-mt-36 place-self-center relative justify-between p-4 pt-6">
         <div className="flex flex-col lg:justify-between items-center">
           <Image
             className="mb-4  lg:mt-12 "
@@ -55,11 +55,8 @@ const Weather = ({ data }) => {
         </div>
         <p className="lg:text-8xl text-6xl">
           {data.main.temp.toFixed(0)}&#176;
-        </p>
-      </div>
-
-      {/* Bottom */}
-      <div className="MARK bg-black/60 relative p-8 rounded-md">
+        </p>      {/* Bottom */}
+      <div className="MARK -z-10 bg-black/60 relative p-8 rounded-md">
         <p className=" text-2xl text-center pb-6">Weather in {data.name}</p>
         <div className=" flex items-center justify-evenly text-center">
           <div>
@@ -82,6 +79,9 @@ const Weather = ({ data }) => {
           <div></div>
         </div>
       </div>
+      </div>
+
+
     </div>
   );
 };
