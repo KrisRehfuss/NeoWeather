@@ -1,23 +1,54 @@
 import React from "react";
 import Image from "next/image";
+import Sun from '../../public/sun.png'
+import LiteClouds from '../../public/cloud.png'
+import HeavyClouds from '../../public/HeavyClouds.png'
+import Rain from '../../public/rain.png'
+import HeavyRain from '../../public/HeavyRain.png'
+import Thunder from '../../public/thunder.png'
+import Snow from '../../public/snow.png'
 
 const Weather = ({ data }) => {
-   if (!data) {
-     return null; // or you can return a default value
-   }
-  
+  if (!data) {
+    return null; // or you can return a default value
+  }
+
+    const getWeatherIcon = (iconCode) => {
+      let imageBe;
+
+      if (iconCode === "01d" || iconCode === "01n") {
+        imageBe = Sun
+      } else if (iconCode === "02d" || iconCode === "02n") {
+        imageBe = LiteClouds
+      } else if (iconCode === "03d" || iconCode === "03n") {
+        imageBe = HeavyClouds
+      } else if (iconCode === "09d" || iconCode === "09n") {
+        imageBe = Rain
+      } else if (iconCode === "10d" || iconCode === "10n") {
+        imageBe = HeavyRain
+      } else if (iconCode === "11d" || iconCode === "11n") {
+        imageBe = Thunder
+      } else if (iconCode === "13d" || iconCode === "13n") {
+        imageBe = Snow
+      } else {
+        imageBe = Sun
+      }
+
+      return imageBe;
+    };
+
   return (
-    <div className="relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto mt-12 p-4">
+    <div className=" relative flex flex-col justify-between lg:w-[500px] w-full h-full m-auto mt-12 p-4">
       {/* Top */}
-      <div className="rounded-2xl bg-black/60 relative flex justify-between p-4 pt-6">
+      <div className=" rounded-2xl bg-sky-900/60 relative flex justify-between p-4 pt-6">
         <div className="flex flex-col items-center">
           <Image
-            className=""
+            className="mb-4 "
             // layout='fill'
             // object="cover"
-            width="100"
-            height="100"
-            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
+            width="50"
+            height="50"
+            src={getWeatherIcon(data.weather[0].icon).src}
             alt="/"
           />
           <p className="text-2xl">{data.weather[0].main}</p>

@@ -14,7 +14,7 @@ function Nav() {
       {/* Logo */}
       <div className="NameShadow FlexCenter ml-4 min-h-[60px] m-0 text-center text-gray-300 font-bold text-xl">
         <Image
-          className="hover:animate-spin mr-3 w-12"
+          className="animate-spin-slow mr-3 w-12"
           src={sun}
           alt="M Logo"
         />
