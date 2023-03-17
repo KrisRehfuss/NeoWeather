@@ -18,7 +18,7 @@ function Nav() {
           src={sun}
           alt="M Logo"
         />
-        Neo<span className="ml-1 text-Redd"> Weather </span>
+        Oscillating<span className="ml-1 text-Redd"> Sun </span>
       </div>
 
       {/* Search Bar */}
@@ -39,7 +39,7 @@ function Nav() {
         </div>
         <div className=" NavItem p-2">
           <a href="https://neoweather.vercel.app">
-            <BsSun className="hover:animate-spin" />
+            <BsSun className="hover:animate-spin-slow hover:text-Gold" />
           </a>
         </div>
         <div className=" NavItem p-2">

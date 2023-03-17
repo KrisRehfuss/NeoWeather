@@ -7,8 +7,13 @@ import Nav from "./Nav";
 import Weather from "./Weather";
 import Spinner from "./Spinner";
 import Beach from "../../public/Beach.jpg";
-import Clouds from '../../public/Clouds.jpg'
+import Clouds from "../../public/Clouds.jpg";
 import Header from "./Header";
+import SunPaper from '../../public/SunPaper.jpg'
+import LiteCloudPaper from '../../public/Overcast.jpg'
+import RainPaper from '../../public/RainPaper.jpg'
+import ThunderPaper from '../../public/ThunderPaper.jpg'
+import SnowPaper from '../../public/SnowPaper.jpg'
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -16,23 +21,36 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [bgImage, setBgImage] = useState(Beach);
 
+  const getBackground = (weather) => {
+    let imageBe;
 
-  // API Endpoint + Key
-  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+    if (weather.main === "Clear") {
+      imageBe = SunPaper;
+    } else if (weather.main === "Clouds") {
+      imageBe = LiteCloudPaper;
+    } else if (weather.main === "Rain") {
+      imageBe = RainPaper;
+    } else if (weather.main === "Thunderstorm") {
+      imageBe = ThunderPaper;
+    } else if (weather.main === "Snow") {
+      imageBe = SnowPaper;
+    } else {
+      imageBe = SunPaper;
+    }
 
-  // Search Function
+    return imageBe;
+  };
+
   const fetchWeather = (e) => {
     e.preventDefault();
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
     setLoading(true);
     axios.get(url).then((response) => {
       setWeather(response.data);
-      console.log(response.data);
-      if (response.data.clouds.all > 0) {
-        setBgImage(Clouds);
-      } else {
-        setBgImage(Beach)
-      }
+      // console.log(response.data);
+
+      const imageBe = getBackground(response.data.weather[0]);
+      setBgImage(imageBe);
     });
     setCity("");
     setLoading(false);
@@ -52,12 +70,12 @@ export default function Home() {
 
         <main>
           {/* Wrapper Start */}
-          <div className="relative FlexCenterCol font-pop w-screen h-screen">
+          <div className="relative z-40 FlexCenterCol font-pop w-screen h-screen">
             <Nav />
             <Image
-              src={bgImage}
+              src={bgImage.src}
               layout="fill"
-              className="-z-50 Smoother opacity-90"
+              className="-z-50 Smoother ease-linear  opacity-70"
               object="cover"
               alt="#"
             />
