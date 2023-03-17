@@ -65,14 +65,16 @@ export default function Home() {
   };
 
   if (loading) {
+    
     return <Spinner />;
   } else {
     return (
       <>
         <Head>
-          <title> TheSunsArc </title>
+          <title> The Sun&apos;s Arc </title>
           <meta name="description" content="Kris Dash" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-s
+          cale=1" />
           <link rel="icon" href="/sun.png" />
         </Head>
 
@@ -102,7 +104,7 @@ export default function Home() {
                   onChange={(e) => setCity(e.target.value)}
                   className=" text-white text-md font-light ml-16 ClearDrop lg:w-2/4 w-3/4 Shadow bg-Logo bg-opacity-60 rounded-full p-2 px-4"
                   type="text"
-                  placeholder="Search city"
+                  placeholder="Search city for weather stats"
                 />
                 <BiSearch
                   onClick={fetchWeather}
