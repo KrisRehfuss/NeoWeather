@@ -70,7 +70,7 @@ export default function Home() {
     return (
       <>
         <Head>
-          <title>NeoWeather </title>
+          <title> TheSunsArc </title>
           <meta name="description" content="Kris Dash" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/sun.png" />

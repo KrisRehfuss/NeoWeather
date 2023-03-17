@@ -13,11 +13,7 @@ function Nav() {
     <div className="Nav shadow-2xl ">
       {/* Logo */}
       <div className="NameShadow FlexCenter ml-4 min-h-[60px] m-0 text-center text-gray-300 font-bold text-xl">
-        <Image
-          className="animate-spin-slow mr-3 w-12"
-          src={sun}
-          alt="M Logo"
-        />
+        <Image className="animate-spin-slow mr-3 w-12" src={sun} alt="M Logo" />
         Oscillating<span className="ml-1 text-Redd"> Sun </span>
       </div>
 
@@ -33,7 +29,7 @@ function Nav() {
       {/* Icons */}
       <div className="FlexCenter h-full  text-2xl mr-4 text-Redd  space-x-4 ">
         <div className=" NavItem p-2">
-          <a href="https://www.neodrream.com">
+          <a href="https://www.krisrehfuss.com">
             <AiOutlineHome />
           </a>
         </div>
