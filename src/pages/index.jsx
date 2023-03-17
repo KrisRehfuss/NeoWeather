@@ -19,41 +19,49 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
-  const [bgImage, setBgImage] = useState(Beach);
+  const [dataloaded, setDataloaded] = useState(false);
 
-  const getBackground = (weather) => {
-    let imageBe;
+  // const [bgImage, setBgImage] = useState(Beach);
 
-    if (weather.main === "Clear") {
-      imageBe = SunPaper;
-    } else if (weather.main === "Clouds") {
-      imageBe = LiteCloudPaper;
-    } else if (weather.main === "Rain") {
-      imageBe = RainPaper;
-    } else if (weather.main === "Thunderstorm") {
-      imageBe = ThunderPaper;
-    } else if (weather.main === "Snow") {
-      imageBe = SnowPaper;
-    } else {
-      imageBe = SunPaper;
-    }
+  // const getBackground = (weather) => {
+  //   let imageBe;
 
-    return imageBe;
-  };
+  //   if (weather.main === "Clear") {
+  //     imageBe = SunPaper;
+  //   } else if (weather.main === "Clouds") {
+  //     imageBe = LiteCloudPaper;
+  //   } else if (weather.main === "Rain") {
+  //     imageBe = RainPaper;
+  //   } else if (weather.main === "Thunderstorm") {
+  //     imageBe = ThunderPaper;
+  //   } else if (weather.main === "Snow") {
+  //     imageBe = SnowPaper;
+  //   } else {
+  //     imageBe = SunPaper;
+  //   }
+
+  //   return imageBe;
+  // };
 
   const fetchWeather = (e) => {
     e.preventDefault();
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
     setLoading(true);
-    axios.get(url).then((response) => {
-      setWeather(response.data);
-      // console.log(response.data);
-
-      const imageBe = getBackground(response.data.weather[0]);
-      setBgImage(imageBe);
-    });
+    axios
+      .get(url)
+      .then((response) => {
+        setWeather(response.data);
+        // console.log(response.data);
+        // const imageBe = getBackground(response.data.weather[0]);
+        // setBgImage(imageBe);
+        setDataLoaded(true); // set state to true once data is loaded
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
     setCity("");
-    setLoading(false);
   };
 
   if (loading) {
@@ -73,7 +81,7 @@ export default function Home() {
           <div className="relative z-40 FlexCenterCol font-pop w-screen h-screen">
             <Nav />
             <Image
-              src={bgImage.src}
+              src={Beach}
               layout="fill"
               className="-z-50 Smoother ease-linear  opacity-70"
               object="cover"
@@ -81,12 +89,11 @@ export default function Home() {
             />
 
             {/* Header */}
-
-            <Header style="z-30 Header rounded-md p-4 mt-6 xl:mt-12" />
+            {dataloaded && (<Header style="z-30 Header rounded-md p-4 mt-6 xl:mt-12" />)}
             {weather.main && <Weather data={weather} />}
 
             {/* Search Bar */}
-            <div className="z-20 lg:mt-32 mt-16  w-screen p-4 FlexCenter">
+            <div className="z-20 lg:mt-12 mt-16  w-screen p-4 FlexCenter">
               <form
                 onSubmit={fetchWeather}
                 className=" FlexCenter lg:w-2/4  Round BoxFit"
