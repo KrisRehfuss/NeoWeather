@@ -82,11 +82,11 @@ export default function Home() {
 
             {/* Header */}
 
-            <Header style="Header rounded-md p-4 mt-6 xl:mt-12" />
+            <Header style="z-30 Header rounded-md p-4 mt-6 xl:mt-12" />
             {weather.main && <Weather data={weather} />}
 
             {/* Search Bar */}
-            <div className="z-20 mt-32  w-screen p-4 FlexCenter">
+            <div className="z-20 lg:mt-32 mt-16  w-screen p-4 FlexCenter">
               <form
                 onSubmit={fetchWeather}
                 className=" FlexCenter lg:w-2/4  Round BoxFit"

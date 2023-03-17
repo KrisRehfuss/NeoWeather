@@ -38,10 +38,10 @@ const Weather = ({ data }) => {
   return (
     <div className=" relative flex flex-col justify-between lg:w-[500px] w-96 h-full m-auto mt-12 p-4">
       {/* Top */}
-      <div className=" rounded-2xl -z-20 bg-sky-900/40 lg:min-w-[900px] w-96 lg:h-96 lg:-mt-36 place-self-center relative flex justify-between p-8 pt-6">
-        <div className="flex flex-col lg:justify-between items-center">
+      <div className=" rounded-2xl bg-sky-900/40 lg:min-w-[900px] w-96 lg:h-96 lg:-mt-36 -mt-8 place-self-center relative flex justify-between p-8 pt-6">
+        <div className="flex flex-col lg:items-center lg:justify-between ">
           <Image
-            className="mb-4  lg:mt-12 "
+            className="mb-4 lg:mt-12 "
             // layout='fill'
             // object="cover"
             width="100"
@@ -49,7 +49,7 @@ const Weather = ({ data }) => {
             src={weatherIcon.src}
             alt="/"
           />
-          <p className="lg:text-6xl  mt-12 lg:mb-24 text-2xl">
+          <p className="lg:text-6xl lg:text-left  mt-12 lg:mb-24 text-center text-5xl">
             {data.weather[0].main}
           </p>
         </div>
